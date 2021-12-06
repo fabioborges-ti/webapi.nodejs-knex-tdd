@@ -7,11 +7,11 @@ Utilize o TDD para desenvolver um gerenciador financeiro com a segurança dos te
 
 ### 💻 Tecnologias
 Lista das principais tecnologias envolvidas no projeto:
-- **NodeJs** (https://nodejs.org/en/)
-- **ExpressJs** (https://expressjs.com/pt-br/)
-- **Knex.js** (https://knexjs.org/)
-- **Jest.js** (https://jestjs.io/pt-BR/)
-- **Postgres** (https://hub.docker.com/_/postgres)
+- **NodeJs** https://nodejs.org/en/
+- **ExpressJs** https://expressjs.com/pt-br/
+- **Knex.js** https://knexjs.org/
+- **Jest.js** https://jestjs.io/pt-BR/
+- **Postgres** https://hub.docker.com/_/postgres
 
 ### 📋 Pré-requisitos
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas: [Git]([https://git-scm.com](https://git-scm.com/)), [Node.js]([https://nodejs.org/en/](https://nodejs.org/en/)) e o [Docker]([https://docs.docker.com/desktop/](https://docs.docker.com/desktop/)). Além disto, sugiro que você utilize um bom editor de código, como o [VSCode]([https://code.visualstudio.com/]  (https://code.visualstudio.com/)), porque irá oferecer muitas extensões que farão toda diferença.
