@@ -1,0 +1,35 @@
+{
+  "name": "tdd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/server",
+    "test": "jest",
+    "lint": "eslint index.js ./src/** ./test/** --fix",
+    "secure-mode": "jest --watchAll=true --verbose --detectOpenHandles"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^27.0.3",
+    "eslint": "^8.3.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.3",
+    "jest": "^27.3.1",
+    "supertest": "3.3.0"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "bcrypt-nodejs": "0.0.3",
+    "consign": "^0.1.6",
+    "express": "^4.17.1",
+    "jwt-simple": "^0.5.5",
+    "knex": "^0.95.14",
+    "knex-logger": "^0.1.0",
+    "passport": "0.4.0",
+    "passport-jwt": "4.0.0",
+    "pg": "^8.7.1"
+  }
+}
