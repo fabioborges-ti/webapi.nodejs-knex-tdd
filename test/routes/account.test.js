@@ -66,4 +66,16 @@ describe('accounts', () => {
     expect(res.body.length).toBe(1);
     expect(res.body[0].name).toBe('Acc User #1');
   });
+  it('Não deve inserir conta com nome duplicado para mesmo usuário', async () => {
+    await app.db('accounts').insert({ name: 'Acc duplicada', user_id: user.id });
+    const res = await request(app).post(MAIN_ROUTE).send({ name: 'Acc duplicada' }).set('authorization', `bearer ${user.token}`);
+    expect(res.status).toBe(400);
+    expect(res.body.error).toBe('There is already an account with the same name');
+  });
+  it('Não deve retornar uma conta de outro usuário', async () => {
+    const acc = await app.db('accounts').insert({ name: 'Acc User #2', user_id: user2.id }, ['id']);
+    const res = await request(app).get(`${MAIN_ROUTE}/${acc[0].id}`).set('authorization', `bearer ${user.token}`);
+    expect(res.status).toBe(403);
+    expect(res.body.error).toBe('Unauthorized resource');
+  });
 });

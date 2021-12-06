@@ -16,6 +16,7 @@ module.exports = (app) => {
     try {
       const { id } = req.params;
       const result = await app.services.account.getById(id);
+      if (result.user_id !== req.user.id) { return res.status(403).json({ error: 'Unauthorized resource' }); }
       return res.status(200).json(result);
     } catch (err) {
       return next(err);

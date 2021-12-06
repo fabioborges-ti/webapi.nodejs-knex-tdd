@@ -1,29 +1,27 @@
 const passport = require('passport');
 const passportJwt = require('passport-jwt');
 
-const secret = 'secret';
-
 const { Strategy, ExtractJwt } = passportJwt;
 
-module.exports = (app) => {
-  const params = {
-    secretOrKey: secret,
-    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  };
+const secret = 'secret';
 
-  const strategy = new Strategy(params, (payload, done) => {
-    app.services.user.getById(payload.id)
-      .then((user) => {
-        if (user) {
-          done(null, { ...payload });
-        } else {
-          done(null, false);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        done(err, false);
-      });
+const params = {
+  secretOrKey: secret,
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+};
+
+module.exports = (app) => {
+  const strategy = new Strategy(params, async (payload, done) => {
+    try {
+      const user = await app.services.user.getById(payload.id);
+      if (user) {
+        done(null, { ...payload });
+      } else {
+        done(null, false);
+      }
+    } catch (err) {
+      done(err, false);
+    }
   });
 
   passport.use(strategy);
